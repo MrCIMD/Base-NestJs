@@ -1,13 +1,15 @@
 // Module
 import { Module } from '@nestjs/common';
+// Modules custom
 import { ConfigModule } from '../config/config.module';
+import { DatabaseModule } from '../database/database.module';
 // Services
 import { ConfigService } from '../config/config.service';
 // Enum
 import { Configuration } from '../config/config.keys';
 
 @Module({
-  imports: [ConfigModule],
+  imports: [ConfigModule, DatabaseModule],
 })
 export class AppModule {
   static PORT: number | string;
