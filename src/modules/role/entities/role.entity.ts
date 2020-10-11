@@ -4,22 +4,21 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
+  ManyToMany,
   DeleteDateColumn,
 } from 'typeorm';
+//   import { User } from '../../user/entities/user.entity';
 
-@Entity('profiles')
-export class Profile {
+@Entity('roles')
+export class Role {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({ type: 'varchar', unique: true, length: 30, nullable: true })
-  username: string;
+  @Column({ type: 'varchar', unique: true, length: 20, nullable: false })
+  name: string;
 
-  @Column({ type: 'varchar', length: 50, nullable: true })
-  firstname: string;
-
-  @Column({ type: 'varchar', length: 50, nullable: true })
-  lastname: string;
+  @Column({ type: 'varchar', unique: true, nullable: false })
+  description: string;
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
@@ -31,7 +30,7 @@ export class Profile {
   deletedAt: Date;
 
   // Relation with User
-  // A profile can have only a user
-  // @OneToOne(type => User)
-  // user: User;
+  // A role can have many users
+  // @ManyToMany(type => User)
+  // roles: User[];
 }

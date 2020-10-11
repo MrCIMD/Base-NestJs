@@ -8,41 +8,41 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
-import { ProfileService } from './profile.service';
+import { RoleService } from './role.service';
 import { DeleteResult, UpdateResult } from 'typeorm';
 
-import { Profile } from './entities/profile.entity';
+import { Role } from './entities/role.entity';
 
-@Controller('profiles')
-export class ProfileController {
-  constructor(private readonly _service: ProfileService) {}
+@Controller('roles')
+export class RoleController {
+  constructor(private readonly _service: RoleService) {}
 
   @Post()
-  public async create(@Body() profile: Profile): Promise<Profile> {
-    return await this._service.create(profile);
+  public async create(@Body() role: Role): Promise<Role> {
+    return await this._service.create(role);
   }
 
   @Get()
-  public async getAll(): Promise<Profile[]> {
+  public async getAll(): Promise<Role[]> {
     return await this._service.findAll();
   }
 
   @Get('deleted')
-  public async getDeleted(): Promise<Profile[]> {
+  public async getDeleted(): Promise<Role[]> {
     return await this._service.findDeleted();
   }
 
   @Get(':id')
-  public async getById(@Param('id') id: string): Promise<Profile> {
+  public async getById(@Param('id') id: string): Promise<Role> {
     return await this._service.findOne(id);
   }
 
   @Patch(':id')
   public async update(
     @Param('id') id: string,
-    @Body() profile: Profile,
+    @Body() role: Role,
   ): Promise<UpdateResult> {
-    return this._service.update(id, profile);
+    return this._service.update(id, role);
   }
 
   @Put(':id/restore')
