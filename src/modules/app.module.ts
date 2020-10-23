@@ -9,9 +9,16 @@ import { ConfigService } from '../config/config.service';
 // Enum
 import { Configuration } from '../config/config.keys';
 import { RoleModule } from './role/role.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
-  imports: [ConfigModule, DatabaseModule, ProfileModule, RoleModule],
+  imports: [
+    ConfigModule,
+    DatabaseModule,
+    ProfileModule,
+    RoleModule,
+    AuthModule,
+  ],
 })
 export class AppModule {
   static PORT: number | string;

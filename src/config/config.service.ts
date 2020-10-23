@@ -20,6 +20,7 @@ export class ConfigService {
     } else {
       this._envConfig = {
         APP_PORT: process.env.APP_PORT,
+        APP_SECRET_KEY: process.env.APP_SECRET_KEY,
         TYPEORM_CONNECTION: process.env.TYPEORM_CONNECTION,
         TYPEORM_HOST: process.env.TYPEORM_HOST,
         TYPEORM_PORT: process.env.TYPEORM_PORT,

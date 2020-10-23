@@ -7,16 +7,22 @@ import {
   Patch,
   Post,
   Put,
+  UseGuards,
 } from '@nestjs/common';
 import { RoleService } from './role.service';
 import { DeleteResult, UpdateResult } from 'typeorm';
 
 import { Role } from './entities/role.entity';
+import { AuthGuard } from '@nestjs/passport';
+import { Roles } from './decorators/roles.decorator';
+import { RoleGuard } from '../../general/guards/role.guard';
 
+@UseGuards(AuthGuard(), RoleGuard)
 @Controller('roles')
 export class RoleController {
   constructor(private readonly _service: RoleService) {}
 
+  @Roles('ADMINISTRATOR')
   @Post()
   public async create(@Body() role: Role): Promise<Role> {
     return await this._service.create(role);

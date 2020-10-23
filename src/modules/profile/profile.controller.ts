@@ -7,12 +7,15 @@ import {
   Patch,
   Post,
   Put,
+  UseGuards,
 } from '@nestjs/common';
 import { ProfileService } from './profile.service';
 import { DeleteResult, UpdateResult } from 'typeorm';
 
 import { Profile } from './entities/profile.entity';
+import { AuthGuard } from '@nestjs/passport';
 
+@UseGuards(AuthGuard())
 @Controller('profiles')
 export class ProfileController {
   constructor(private readonly _service: ProfileService) {}

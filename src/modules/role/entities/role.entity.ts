@@ -7,7 +7,7 @@ import {
   ManyToMany,
   DeleteDateColumn,
 } from 'typeorm';
-//   import { User } from '../../user/entities/user.entity';
+import { User } from '../../auth/entities/user.entity';
 
 @Entity('roles')
 export class Role {
@@ -31,6 +31,9 @@ export class Role {
 
   // Relation with User
   // A role can have many users
-  // @ManyToMany(type => User)
-  // roles: User[];
+  @ManyToMany(
+    type => User,
+    user => user.roles,
+  )
+  users: User[];
 }

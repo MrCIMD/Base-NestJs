@@ -5,7 +5,9 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   DeleteDateColumn,
+  OneToOne,
 } from 'typeorm';
+import { User } from '../../auth/entities/user.entity';
 
 @Entity('profiles')
 export class Profile {
@@ -32,6 +34,6 @@ export class Profile {
 
   // Relation with User
   // A profile can have only a user
-  // @OneToOne(type => User)
-  // user: User;
+  @OneToOne(type => User)
+  user: User;
 }
