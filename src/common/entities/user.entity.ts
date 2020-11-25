@@ -4,8 +4,7 @@ import {
   DeleteDateColumn,
   Entity,
   JoinColumn,
-  JoinTable,
-  ManyToMany,
+  ManyToOne,
   OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
@@ -39,13 +38,8 @@ export class User {
   @JoinColumn()
   profile: Profile;
 
-  // Relation with Roles
-  // A user can have many roles
-  @ManyToMany(
-    type => Role,
-    role => role.users,
-    { eager: true },
-  )
-  @JoinTable({ name: 'users_roles' })
-  roles: Role[];
+  // Relation with Role
+  // A user can have only a users
+  @ManyToOne(() => Role, role => role.users)
+  role: Role;
 }

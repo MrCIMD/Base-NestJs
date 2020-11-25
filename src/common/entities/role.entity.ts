@@ -4,8 +4,8 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
-  ManyToMany,
   DeleteDateColumn,
+  OneToMany,
 } from 'typeorm';
 import { User } from './user.entity';
 
@@ -31,9 +31,6 @@ export class Role {
 
   // Relation with User
   // A role can have many users
-  @ManyToMany(
-    type => User,
-    user => user.roles,
-  )
+  @OneToMany(() => User, user => user.role)
   users: User[];
 }
