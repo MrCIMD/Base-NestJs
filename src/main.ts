@@ -6,5 +6,6 @@ async function bootstrap() {
   app.setGlobalPrefix('api');
   app.enableCors();
   await app.listen(AppModule.PORT);
+  console.log(`[ APP BASE NESTJS ] host run in ${AppModule.HTTP}://${AppModule.HOST}:${AppModule.PORT}`)
 }
 bootstrap();

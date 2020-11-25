@@ -1,8 +1,8 @@
 import { Controller } from '@nestjs/common';
 import { Crud, CrudController } from '@nestjsx/crud';
-import { Role } from 'src/common/entities/role.entity';
 
 import { RoleService } from './role.service';
+import { Role } from './../../entities/role.entity'
 
 @Crud({
   model: {
@@ -19,5 +19,5 @@ import { RoleService } from './role.service';
 })
 @Controller('roles')
 export class RoleController implements CrudController<Role> {
-  constructor(public service: RoleService) {}
+  constructor(public service: RoleService) { }
 }

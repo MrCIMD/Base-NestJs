@@ -22,7 +22,11 @@ import { Configuration } from '../common/config/config.keys';
 })
 export class AppModule {
   static PORT: number | string;
+  static HTTP: string;
+  static HOST: string;
   constructor(private readonly _configService: ConfigService) {
     AppModule.PORT = this._configService.get(Configuration.APP_PORT);
+    AppModule.HTTP = this._configService.get(Configuration.APP_HTTP_PROTOCOL);
+    AppModule.HOST = this._configService.get(Configuration.APP_HOST);
   }
 }

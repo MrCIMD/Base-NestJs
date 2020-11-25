@@ -28,9 +28,6 @@ export class ConfigService {
         TYPEORM_USERNAME: process.env.TYPEORM_USERNAME,
         TYPEORM_PASSWORD: process.env.TYPEORM_PASSWORD,
         TYPEORM_DATABASE: process.env.TYPEORM_DATABASE,
-        TYPEORM_ENTITIES: process.env.TYPEORM_ENTITIES,
-        TYPEORM_MIGRATIONS: process.env.TYPEORM_MIGRATIONS,
-        TYPEORM_MIGRATIONS_DIR: process.env.TYPEORM_MIGRATIONS_DIR,
       };
     }
   }
