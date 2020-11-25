@@ -1,15 +1,15 @@
 // Module
 import { Module } from '@nestjs/common';
+import { ProfileModule } from '../common/api/profile/profile.module';
+import { RoleModule } from '../common/api/role/role.module';
+import { AuthModule } from '../common/api/auth/auth.module';
 // Modules custom
-import { ConfigModule } from '../config/config.module';
-import { DatabaseModule } from '../database/database.module';
-import { ProfileModule } from './profile/profile.module';
+import { ConfigModule } from '../common/config/config.module';
+import { DatabaseModule } from '../common/database/database.module';
 // Services
-import { ConfigService } from '../config/config.service';
+import { ConfigService } from '../common/config/config.service';
 // Enum
-import { Configuration } from '../config/config.keys';
-import { RoleModule } from './role/role.module';
-import { AuthModule } from './auth/auth.module';
+import { Configuration } from '../common/config/config.keys';
 
 @Module({
   imports: [
