@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { parse } from 'dotenv';
-import * as fs from 'fs';
+import { readFileSync } from 'fs';
+import { existsSync } from 'fs';
 
 @Injectable()
 export class ConfigService {
@@ -10,13 +11,13 @@ export class ConfigService {
     const isDevelopmentEnv = process.env.NODE_ENV !== 'production';
 
     if (isDevelopmentEnv) {
-      const envFilePath = __dirname + '/../../.env';
-      const existsPath = fs.existsSync(envFilePath);
+      const envFilePath = __dirname + '/../../../.env';
+      const existsPath = existsSync(envFilePath);
       if (!existsPath) {
-        console.log('.env file does not exist');
+        console.log(`${envFilePath} file does not exist`);
         process.exit(0);
       }
-      this._envConfig = parse(fs.readFileSync(envFilePath));
+      this._envConfig = parse(readFileSync(envFilePath));
     } else {
       this._envConfig = {
         APP_PORT: process.env.APP_PORT,

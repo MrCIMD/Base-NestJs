@@ -1,25 +1,23 @@
 // Modules
-import { ConfigModule } from '../../config/config.module';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { PassportModule } from '@nestjs/passport';
+import { JwtModule } from '@nestjs/jwt';
+import { ConfigModule } from './../../config/config.module';
+import { Configuration } from '../../config/config.keys';
 // Controllers
 import { AuthController } from './auth.controller';
 // Services
 import { AuthService } from './auth.service';
-import { ConfigService } from '../../config/config.service';
+import { ConfigService } from './../../config/config.service';
 // Entities
 import { User } from '../../entities/user.entity';
-import { Role } from '../../entities/role.entity';
 // Strategies
 import { JwtStrategy } from './strategies/jwt.strategy';
-import { JwtModule } from '@nestjs/jwt';
-// Enums
-import { Configuration } from '../../config/config.keys';
 
 @Module({
   imports: [
-    TypeOrmModule.forFeature([User, Role]),
+    TypeOrmModule.forFeature([User]),
     PassportModule.register({ defaultStrategy: 'jwt' }),
     JwtModule.registerAsync({
       imports: [ConfigModule],
@@ -27,7 +25,7 @@ import { Configuration } from '../../config/config.keys';
       useFactory(config: ConfigService) {
         return {
           secret: config.get(Configuration.APP_SECRET_KEY),
-          signOptions: { expiresIn: 3600 },
+          signOptions: { expiresIn: 60 * 60 * 24 * 7 },
         };
       },
     }),
