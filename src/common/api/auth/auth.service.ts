@@ -51,7 +51,7 @@ export class AuthService extends TypeOrmCrudService<User> {
     const payload: IJwt = {
       id: user.id,
       email: user.email,
-      roles: user.roles.map(r => r.name),
+      role: user.role,
     };
     const token = this.jwt.sign(payload);
     const decod: any = this.jwt.decode(token);
