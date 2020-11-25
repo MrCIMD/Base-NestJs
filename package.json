@@ -1,6 +1,6 @@
 {
   "name": "base-nest-js",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "NestJs base project, ready to use. They contain libraries and configurations that it is not necessary to recreate them, you can modify them for your requirements.",
   "author": "Caleb Isaac Mora Díaz",
   "private": true,
