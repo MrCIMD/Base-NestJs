@@ -7,6 +7,7 @@ import {
   DeleteDateColumn,
   OneToMany,
 } from 'typeorm';
+import { Permission } from './permission.entity';
 import { User } from './user.entity';
 
 @Entity('roles')
@@ -33,4 +34,9 @@ export class Role {
   // A role can have many users
   @OneToMany(() => User, user => user.role)
   users: User[];
+
+  // Relation with Permission
+  // A role can have many permissions
+  @OneToMany(() => Permission, (permission) => permission.role)
+  permissions: Permission[];
 }
